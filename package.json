@@ -1,0 +1,21 @@
+{
+  "name": "theteamless",
+  "version": "1.0.0",
+  "description": "TeamlessCTF's bot used to help organize CTF events",
+  "main": "index.js",
+  "scripts": {
+    "test": "ping"
+  },
+  "author": "Astro#1779",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/builders": "^0.6.0",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "bent": "^7.3.12",
+    "discord-api-types": "^0.22.0",
+    "discord.js": "^13.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0"
+  }
+}
