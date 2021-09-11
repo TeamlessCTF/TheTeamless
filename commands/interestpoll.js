@@ -15,11 +15,9 @@ module.exports = {
 	async execute(interaction) {
 		await interaction.reply(`Working on it...`);
 
-		const time = new Date().getTime();
-
 		const getJSON = bent('json')
-		const response = await getJSON(`https://ctftime.org/api/v1/events/?limit=100&start=${time - 1000}finish=${time*100}`);
 		const url = interaction.options.getString('ctftime_link');
+		const response = await getJSON(`https://ctftime.org/api/v1/events/${url.split("/")[4]}/`);
 		
 		let addtlInfo = "";
 		let teamSize = "N/A";
@@ -34,15 +32,7 @@ module.exports = {
 			teamSize = interaction.options.getString('team_size');
 		}
 
-		var data = "";
-
-		response.every((item) => {
-			data = item;
-			if (item['id'].toString() == url.split("/").slice(-1)[0].toString()){
-				return false;
-			}
-			return true;
-		})
+		var data = response;
 
 		const exampleEmbed = new MessageEmbed()
 			.setColor('#0099ff')

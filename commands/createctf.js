@@ -41,7 +41,6 @@ module.exports = {
 			permissionOverwrites: [
 				{id: role.id, allow: [Permissions.FLAGS.VIEW_CHANNEL]},
 				{id: channel.guild.roles.everyone, deny: [Permissions.FLAGS.VIEW_CHANNEL]},
-				{id: 865371151312224257, allow: [Permissions.FLAGS.VIEW_CHANNEL]},
 			],
 		})
 
