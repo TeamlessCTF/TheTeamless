@@ -1,9 +1,9 @@
 // Require the necessary discord.js classes
 const fs = require('fs');
 const { Client, Collection, Intents } = require('discord.js');
-const { token } = require('./config.json');
+const { token, ctfProposalsId } = require('./config.json');
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS] });
 
 client.commands = new Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -36,6 +36,16 @@ client.on('interactionCreate', async interaction => {
 	}
 });
 
+client.on('interactionCreate', async interaction => {
+	if (!interaction.isButton()) return;
+
+	messageId = interaction.message.id;
+	const channel = await interaction.client.channels.fetch(ctfProposalsId);
+	const buttonRole = await channel.messages.fetch(messageId);
+	const roleId = buttonRole.content.split("<@&").reverse()[0].split("> role!")[0];
+	await interaction.member.roles.add(roleId);
+	await interaction.reply({ content: `You've just been given the role <@&${roleId}>!`, ephemeral: true});
+});
 
 // Login to Discord with your client's token
 client.login(token);
