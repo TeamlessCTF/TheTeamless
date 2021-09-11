@@ -2,5 +2,6 @@
 	"comment": "Make sure this file is called `config.json`!",
 	"token": "TOKEN_HERE",
     "clientId": "BOT_ID",
-    "guildId": "SERVER_ID"
+    "guildId": "SERVER_ID",
+    "ctfProposalsId": "PROPOSALS_ID"
 }
