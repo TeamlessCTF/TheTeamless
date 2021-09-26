@@ -16,7 +16,7 @@ module.exports = {
 				{ name: '/interestpoll', value: "Creates a **poll** (not a role assigner) to gauge interest in a CTF" },
 				{ name: '/createctf', value: "Creates a role, category, channels, and a button to gain access" },
 				{ name: '/pfp', value: "Gives the profile picture of a user." },
-                { name: '/archivectf', value: "Coming soon™️" },
+                { name: '/archivectf', value: "'REMOVES all challenge channels for a CTF, and backs them up on https://archive.teamlessctf.org/channels/CTF_NAME/index.html." },
 			)
 
         await interaction.reply({embeds: [helpEmbed]});

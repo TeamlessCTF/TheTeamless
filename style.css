@@ -1,0 +1,12 @@
+body{
+	padding:0;
+}
+
+*{
+	font-family: Consolas;
+}
+
+li{
+	font-size: 20px;
+	margin-bottom:3px;
+}
