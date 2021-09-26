@@ -54,7 +54,7 @@ module.exports = {
                     return;
                 }
 
-                await fs.mkdir(`./chats/${safeParentName}`, (err) => {});
+                await fs.mkdir(`./chats/${safeParentName} -m 755`, (err) => {});
                 await execSync(`bash -c "./DiscordChatExporter export -b -t ${token} -o chats/${safeParentName} -c ${channelsString}"`);
                 
                 const files = fs.readdirSync(`chats/${safeParentName}`);
@@ -72,6 +72,8 @@ module.exports = {
                 });
                 indexCode = indexCode.concat("</ul></body>");
                 fs.writeFile(`chats/${safeParentName}/index.html`, indexCode, 'utf8', (err) => {});
+		    
+		await execSync(`bash -c "chmod 755 -R chats/"`);
 
                 await currentChannel.send(`Completed backup! You can find the chats at https://archive.teamlessctf.org/channels/${safeParentName}/index.html`);
                 if (interaction.options.getBoolean("dont_delete") == true){
