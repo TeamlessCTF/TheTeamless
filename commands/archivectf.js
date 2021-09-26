@@ -73,7 +73,7 @@ module.exports = {
                 indexCode = indexCode.concat("</ul></body>");
                 fs.writeFile(`chats/${safeParentName}/index.html`, indexCode, 'utf8', (err) => {});
 
-                await currentChannel.send(`Completed backup! You can find the chats at https://archive.teamlessctf.org/${safeParentName}/index.html`);
+                await currentChannel.send(`Completed backup! You can find the chats at https://archive.teamlessctf.org/channels/${safeParentName}/index.html`);
                 if (interaction.options.getBoolean("dont_delete") == true){
                     return;
                 }
