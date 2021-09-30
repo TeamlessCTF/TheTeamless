@@ -55,7 +55,7 @@ module.exports = {
                 }
 
                 await fs.mkdir(`./chats/${safeParentName}`, (err) => {});
-                await execSync(`bash -c "./DiscordChatExporter export -b -t ${token} -o chats/${safeParentName} -c ${channelsString}"`);
+                await execSync(`bash -c "./DiscordChatExporter export -b -t ${token} -o chats/${safeParentName} -c ${channelsString}"`,  { stdio: 'ignore' });
                 
                 const files = fs.readdirSync(`chats/${safeParentName}`);
                 var allChats = [];
